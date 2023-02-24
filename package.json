@@ -1,0 +1,6 @@
+{
+  "name": "ga4_demo_analytics_pioneers",
+  "dependencies": {
+    "@dataform/core": "2.0.1"
+  }
+}
