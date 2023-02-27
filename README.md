@@ -1,4 +1,4 @@
-# dataform_analytics_pioneers
+# Dataform GA4 Demo Repository - Analytics Pioneers Training
 
 Demo GA4 Dataform project created and used in the Analytics Pioneers Dataform training. https://analytics-pioneers.com/community-trainings/
 
