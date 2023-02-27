@@ -1,3 +1,6 @@
+-- we define a used defined function (udf) which will compute the channelgrouping.
+-- the routine will be saved in the standard dataset defined with schema in dataform.json
+-- input: source, medium, campaign from traffic_source field
 config {
     type: "operations",
     hasOutput: true,
@@ -6,6 +9,9 @@ config {
 
 create or replace function ${self()}(tsource string, medium string, campaign string) as (
     case
+        -- we deal with redacted data in the ga4 demo dataset
+        when (medium = '(data deleted)')
+            then 'data_deleted'
         when (tsource = 'direct' or tsource is null) 
             and (regexp_contains(medium, r'^(\(not set\)|\(none\))$') or medium is null) 
             then 'direct'

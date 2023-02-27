@@ -1,0 +1,24 @@
+config { 
+    type: "view",
+    description:"",
+    columns:{
+        event_timestamp: "Microseconds Timestamp",
+        user_pseudo_id: "User ID"
+    },
+    // automatic testing provided by dataform. will generate new views containing found 
+     assertions: {
+        nonNull: ["channel_grouping"]
+    }
+}
+
+SELECT
+  -- we reference the channel grouping user defined function declared in channel_grouping.sqlx
+  ${ref("channel_grouping")}(traffic_source.source, traffic_source.medium, traffic_source.name) as channel_grouping,
+  traffic_source.source,
+  traffic_source.medium,
+  traffic_source.name,
+  count(1) as event_count
+FROM 
+    ${ref("events_*")}
+group by 1,2,3,4
+order by 4 desc

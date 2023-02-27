@@ -1,3 +1,5 @@
+-- we declare our ga4 source table. 
+-- in this case the ga4 sample dataset from google is being used
 config {
     type: "declaration",
     database: "bigquery-public-data",
